@@ -22,8 +22,8 @@ jobs:
       uses: actions/checkout@master
     - name: Set up Nodejs
       run: |
-      apt-get install nodejs -y
-      npm install
+        apt-get install nodejs -y
+        npm install
     - name: Claim rewards
       run: |
         npm start {{ secrets.username }} {{ secrets.password }}
