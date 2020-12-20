@@ -1,0 +1,32 @@
+name: AutoClaim
+
+on: 
+  release:
+    types: [published]
+  push:
+    tags:
+    - 'v*'
+  #  branches: 
+  #    - master
+  schedule:
+    - cron: "0 4 * * *"
+  watch:
+    types: [started]
+   
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id  # 自己点的 start
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: Set up Nodejs
+      run: |
+      apt-get install nodejs -y
+      npm install
+    - name: Claim rewards
+      run: |
+        npm start {{ secrets.username }} {{ secrets.password }}
+    - name: Claim rewards2
+      run: |
+        npm start {{ secrets.username2 }} {{ secrets.password2 }}
