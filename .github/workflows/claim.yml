@@ -26,6 +26,7 @@ jobs:
         npm install
     - name: Claim rewards
       run: |
+        mkdir /home/runner/work/epicgames-freebies-claimer/epicgames-freebies-claimer/.egstore/9d0e8aa2892a9f23fa7f89051a4ae0a05c2c4858c25a86c4e9ebf9060b9a63b2
         npm start {{ secrets.username }} {{ secrets.password }}
     - name: Claim rewards2
       run: |
